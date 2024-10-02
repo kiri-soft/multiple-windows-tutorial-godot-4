@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://cg232pg3tu0vt"]
+
+[ext_resource type="Texture2D" uid="uid://rck4jdqfpnj1" path="res://background/1.png" id="1_y2edp"]
+[ext_resource type="Texture2D" uid="uid://du4dqvl1gtfjr" path="res://background/2.png" id="2_42mrq"]
+[ext_resource type="Script" path="res://player.gd" id="3_1oy4g"]
+[ext_resource type="Texture2D" uid="uid://b46wqdjkgswsf" path="res://character2.png" id="4_76m86"]
+[ext_resource type="Texture2D" uid="uid://cw43r5yyqbm7d" path="res://tileset1.png" id="5_0l3qq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mai5c"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tytyr"]
+texture = ExtResource("5_0l3qq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.90899, -9.17626, 16, -9.17626, 16, 8.10718, -7.48355, 8.28536, -10.6908, -0.44545, -14.2544, -5.43448)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -9.17626, 16, -9.17626, 16, 5.07812, -16, 5.07812)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -8.99808, 7.48355, -8.8199, 9.08717, -6.68174, 13.0071, -6.1472, 9.26535, -2.04907, 7.83991, 7.21628, -16, 4.89994)
+
+[sub_resource type="TileSet" id="TileSet_u81ka"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_tytyr")
+
+[node name="world" type="Node2D"]
+
+[node name="bg" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -9.0
+offset_top = 76.0
+offset_right = 31.0
+offset_bottom = 116.0
+
+[node name="Sprite2D" type="Sprite2D" parent="bg"]
+position = Vector2(351, -124)
+scale = Vector2(4, 4)
+texture = ExtResource("1_y2edp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="bg"]
+modulate = Color(0.945098, 0.670588, 0.843137, 1)
+position = Vector2(419, -234)
+scale = Vector2(4, 4)
+texture = ExtResource("2_42mrq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="bg"]
+position = Vector2(1955, -194)
+scale = Vector2(4, 4)
+texture = ExtResource("1_y2edp")
+
+[node name="Sprite2D4" type="Sprite2D" parent="bg"]
+modulate = Color(0.945098, 0.670588, 0.843137, 1)
+position = Vector2(2029, -236)
+scale = Vector2(-4, 4)
+texture = ExtResource("2_42mrq")
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(118, 11)
+script = ExtResource("3_1oy4g")
+
+[node name="Marker2D" type="Marker2D" parent="player"]
+position = Vector2(0, -3.25)
+scale = Vector2(0.25, 0.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+scale = Vector2(4, 4)
+shape = SubResource("CapsuleShape2D_mai5c")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+scale = Vector2(4, 4)
+texture = ExtResource("4_76m86")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(0, -223)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(97, -824)
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_u81ka")
+format = 2
+layer_0/tile_data = PackedInt32Array(1048579, 65536, 0, 1048580, 131072, 0, 1114108, 0, 0, 1114109, 65536, 0, 1114110, 65536, 0, 1114111, 65536, 0, 1048576, 65536, 0, 1048577, 65536, 0, 1048578, 65536, 0, 983046, 0, 0, 983047, 65536, 0, 983048, 131072, 0, 917514, 0, 0, 917515, 65536, 0, 917516, 131072, 0, 1048595, 0, 0, 1048596, 65536, 0, 1048597, 131072, 0, 983062, 0, 0, 983063, 65536, 0, 983064, 131072, 0, 917529, 0, 0, 917530, 65536, 0, 917531, 131072, 0, 786454, 0, 0, 786455, 65536, 0, 786456, 131072, 0, 720916, 0, 0, 720917, 65536, 0, 720918, 131072, 0, 655379, 0, 0, 655380, 65536, 0, 655381, 131072, 0, 851982, 0, 0, 851983, 65536, 0, 851984, 131072, 0, 917520, 0, 0, 917521, 65536, 0, 917522, 131072, 0, 983057, 0, 0, 983058, 65536, 0, 983059, 131072, 0)
+
+[node name="Node" type="Node" parent="."]

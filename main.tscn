@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://8p7jed7om1w8"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_1bw8g"]
+[ext_resource type="Texture2D" uid="uid://4vowdydv1w8j" path="res://icon.svg" id="2_tx4j3"]
+[ext_resource type="Script" path="res://Window.gd" id="3_mlgj2"]
+[ext_resource type="PackedScene" uid="uid://cg232pg3tu0vt" path="res://world.tscn" id="4_5ornd"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_1bw8g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(498, 269)
+texture = ExtResource("2_tx4j3")
+
+[node name="Window" type="Window" parent="."]
+position = Vector2i(200, 200)
+size = Vector2i(300, 200)
+script = ExtResource("3_mlgj2")
+
+[node name="Camera2D" type="Camera2D" parent="Window"]
+
+[node name="Window2" type="Window" parent="."]
+position = Vector2i(200, 200)
+size = Vector2i(300, 200)
+script = ExtResource("3_mlgj2")
+
+[node name="Camera2D" type="Camera2D" parent="Window2"]
+
+[node name="world" parent="." instance=ExtResource("4_5ornd")]
+position = Vector2(-126, 368)
